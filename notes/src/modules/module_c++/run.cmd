@@ -1,6 +1,6 @@
 @PUSHD %~dp0
 @ECHO --------Compiling
-@javac main.java
+@g++ main.cpp -o main.exe
 @ECHO --------Runing
-@java main
+@main.exe
 @POPD
