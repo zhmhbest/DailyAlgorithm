@@ -65,30 +65,36 @@ ELEMENT stack_pop(Stack* stack) {
 
 
 int main() {
+    // Create
     Stack* stack = stack_create(32);
     printf("empty=%d\n", stack_empty(stack));
     printf("\n");
     
+    // Push
     stack_push(stack, 123);
     printf("length=%d\n", stack_length(stack));
     printf("empty=%d\n", stack_empty(stack));
     printf("top=%d\n", stack_top(stack));
     printf("\n");
 
+    // Push
     stack_push(stack, 456);
     printf("length=%d\n", stack_length(stack));
     printf("empty=%d\n", stack_empty(stack));
     printf("top=%d\n", stack_top(stack));
     printf("\n");
 
+    // Pop
     printf("pop=%d\n", stack_pop(stack));
     printf("empty=%d\n", stack_empty(stack));
     printf("\n");
 
+    // Pop
     printf("pop=%d\n", stack_pop(stack));
     printf("empty=%d\n", stack_empty(stack));
     printf("\n");
 
+    // Drop
     stack_drop(stack);
     return 0;
 }
