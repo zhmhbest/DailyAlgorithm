@@ -1,6 +1,8 @@
 # 执行模板
 
-- [C](module_c)
-- [C++](module_c++)
-- [Java](module_java)
-- [Python](module_python)
+使用`VSCode` + `Plugin: Code Runner`执行代码。
+
+- [C](main.c)
+- [C++](main.cpp)
+- [Java](main.java)
+- [Python](main.py)

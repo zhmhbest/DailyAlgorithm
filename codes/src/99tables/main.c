@@ -1,4 +1,4 @@
-/*
+﻿/*
     请输出 9*9 乘法口诀表
 
     1×1=1
@@ -12,13 +12,13 @@
     1×9=9 2×9=18 3×9=27 4×9=36 5×9=45 6×9=54 7×9=63 8×9=72 9×9=81
 */
 #include <stdio.h>
-#define MUL_GBK_CHAR "\xA1\xC1" // ×
+#define MUL_CHAR "×"
 
 int main() {
     int i,j;
     for (i=1; i<10; i++) {
         for (j=1; j<i+1; j++) {
-            printf("%d%s%d=%d\t", j, MUL_GBK_CHAR, i, i*j);
+            printf("%d%s%d=%d\t", j, MUL_CHAR, i, i * j);
         }
         printf("\n");
     }

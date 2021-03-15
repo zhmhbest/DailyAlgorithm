@@ -1,10 +1,22 @@
 <link rel="stylesheet" href="https://zhmhbest.gitee.io/hellomathematics/style/index.css">
 <script src="https://zhmhbest.gitee.io/hellomathematics/style/index.js"></script>
 
-# [每日算法](https://github.com/zhmhbest/DailyAlgorithm)
+# [数据结构](../index.html)
 
-## [数据结构](data_structures/index.html)
+## [线性表](linear_list/index.html)
 
-## 每日一题
+## 二叉树
 
-- [打印九九乘法表](src/99tables/main.c)
+待补充
+
+## 树
+
+待补充
+
+## 图
+
+待补充
+
+## 内排序算法
+
+待补充
