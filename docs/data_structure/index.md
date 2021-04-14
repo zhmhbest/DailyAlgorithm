@@ -9,6 +9,4 @@
 
 ## 图
 
-待补充
-
 ## [内排序算法](Inner_sorting/index.html)
