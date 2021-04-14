@@ -28,7 +28,8 @@ void insertSort(int arr[], int len)
 
 int main()
 {
-    int arr[] = {2, 4, 5, 1, 8};
+    // int arr[] = {2, 4, 5, 1, 8};
+    int arr[] = {8, 5, 4, 2, 1};
     const int len = 5;
     printArray(arr, len);
     insertSort(arr, len);

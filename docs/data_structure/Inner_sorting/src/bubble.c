@@ -4,15 +4,21 @@
 #include "array.inl"
 
 /**
- * 简单选择排序
+ * 冒泡排序
  */
-void selectSort(int arr[], int len)
+void bubbleSort(int arr[], int len)
 {
+    // [ →i→ ]
     for (int i = 0; i < len; i++)
     {
-        int j = minKey(arr, len, i);
-        if (i != j)
-            swapValue(arr, i, j);
+        // (i ←j← ]
+        for (int j = len - 1; j > i; j--)
+        {
+            if (arr[j - 1] > arr[j])
+            {
+                swapValue(arr, j - 1, j);
+            }
+        }
     }
 }
 
@@ -22,7 +28,7 @@ int main()
     int arr[] = {8, 5, 4, 2, 1};
     const int len = 5;
     printArray(arr, len);
-    selectSort(arr, len);
+    bubbleSort(arr, len);
     printArray(arr, len);
     return 0;
 }
