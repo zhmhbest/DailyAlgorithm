@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css">
       
       
       
@@ -290,7 +290,11 @@ pre[data-line] .line-highlight[data-end]:after {
 <li><a href="#%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F">&#x4EA4;&#x6362;&#x6392;&#x5E8F;</a>
 <ul>
 <li><a href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F">&#x5192;&#x6CE1;&#x6392;&#x5E8F;</a></li>
-<li><a href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F">&#x5FEB;&#x901F;&#x6392;&#x5E8F;</a></li>
+<li><a href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F">&#x5FEB;&#x901F;&#x6392;&#x5E8F;</a>
+<ul>
+<li><a href="#partition">Partition</a></li>
+</ul>
+</li>
 <li><a href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E4%B8%89%E5%B9%B3%E5%9D%87">&#x5FEB;&#x901F;&#x6392;&#x5E8F;&#x4E09;&#x5E73;&#x5747;</a></li>
 </ul>
 </li>
@@ -840,28 +844,43 @@ pre[data-line] .line-highlight[data-end]:after {
     <span class="token keyword">if</span> <span class="token punctuation">(</span>boundL <span class="token operator">&gt;=</span> boundR<span class="token punctuation">)</span>
         <span class="token keyword">return</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">int</span> partition <span class="token operator">=</span> arr<span class="token punctuation">[</span>boundR<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">// &#x6BCF;&#x8F6E;&#x786E;&#x5B9A;&#x4E00;&#x4E2A;&#x4E2D;&#x95F4;&#x6570;arr[p]&#x7684;&#x4F4D;&#x7F6E;</span>
+    <span class="token keyword">int</span> p <span class="token operator">=</span> boundR<span class="token punctuation">;</span>
     <span class="token keyword">int</span> i <span class="token operator">=</span> boundL<span class="token punctuation">;</span>
     <span class="token keyword">int</span> j <span class="token operator">=</span> boundR <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
 
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> j<span class="token punctuation">)</span>
+    <span class="token comment">// printf(&quot;bound=%d,%d,p=%d\n&quot;, boundL, boundR, p);</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token comment">// &#x671F;&#x671B;&#x5DE6;&#x4FA7;&#x6570;&#x636E;&#x5C0F;&#x4E8E;partition</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> partition <span class="token operator">&amp;&amp;</span> i <span class="token operator">&lt;</span> j<span class="token punctuation">)</span>
+        <span class="token comment">// &#x671F;&#x671B;&#x5DE6;&#x4FA7;&#x6570;&#x636E;&#x5C0F;&#x4E8E;arr[p]</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> arr<span class="token punctuation">[</span>p<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> i <span class="token operator">&lt;</span> j<span class="token punctuation">)</span>
             i<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token comment">// &#x671F;&#x671B;&#x53F3;&#x4FA7;&#x6570;&#x636E;&#x5927;&#x4E8E;partition</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&gt;=</span> partition <span class="token operator">&amp;&amp;</span> i <span class="token operator">&lt;</span> j<span class="token punctuation">)</span>
+
+        <span class="token comment">// &#x671F;&#x671B;&#x53F3;&#x4FA7;&#x6570;&#x636E;&#x5927;&#x4E8E;arr[p]</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&gt;=</span> arr<span class="token punctuation">[</span>p<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> i <span class="token operator">&lt;</span> j<span class="token punctuation">)</span>
             j<span class="token operator">--</span><span class="token punctuation">;</span>
 
+        <span class="token comment">// &#x6B64;&#x65F6;i == j&#x5373;&#x4E3A;arr[p]&#x7684;&#x4F4D;&#x7F6E;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> j<span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+
         <span class="token comment">// &#x4E0D;&#x6EE1;&#x8DB3;&#x671F;&#x671B;&#x7684;&#x5730;&#x65B9;&#x4EA4;&#x6362;&#x4E24;&#x4FA7;&#x6570;&#x636E;</span>
+        <span class="token comment">// printf(&quot;swap1 %d,%d\n&quot;, i, j);</span>
         <span class="token function">swapValue</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">// &#x5B9A;&#x4F4D;&#x5207;&#x5272;&#x6570;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&gt;=</span> arr<span class="token punctuation">[</span>boundR<span class="token punctuation">]</span><span class="token punctuation">)</span>
-        <span class="token function">swapValue</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> i<span class="token punctuation">,</span> boundR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&gt;=</span> arr<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// printf(&quot;swap2 %d,%d\n&quot;, i, p);</span>
+        <span class="token function">swapValue</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> i<span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
     <span class="token keyword">else</span>
+    <span class="token punctuation">{</span>
         i<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// printArray(arr, 6);</span>
 
     <span class="token keyword">if</span> <span class="token punctuation">(</span>i<span class="token punctuation">)</span>
         <span class="token function">quickSwapPartitionRecursive</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> boundL<span class="token punctuation">,</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -878,16 +897,80 @@ pre[data-line] .line-highlight[data-end]:after {
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-    <span class="token comment">// int arr[] = {2, 4, 5, 1, 8};</span>
-    <span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-    <span class="token keyword">const</span> <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span>
     <span class="token function">printArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">quickSwapSortByRecursive</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">printArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-</pre><h3 class="mume-header" id="%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E4%B8%89%E5%B9%B3%E5%9D%87">&#x5FEB;&#x901F;&#x6392;&#x5E8F;&#x4E09;&#x5E73;&#x5747;</h3>
+</pre><h4 class="mume-header" id="partition">Partition</h4>
+
+<ul>
+<li><span style="color: yellow">&#x4EA4;&#x6362;&#x70B9;</span>&#x4E4B;&#x95F4;&#x4EA4;&#x6362;</li>
+<li><span style="color: red">&#x51BB;&#x7ED3;</span>&#x548C;<span style="color: green">&#x4E2D;&#x70B9;</span>&#x4EA4;&#x6362;</li>
+</ul>
+<div class="mermaid">graph LR
+    subgraph 0
+        style 0 stroke:#333,stroke-width:2px,fill:grey;
+        style B fill:yellow;
+        style D fill:yellow;
+        style F fill:red;
+        style D stroke:green,stroke-width:6px;
+        A((5))
+        B((8))
+        C((4))
+        D((2))
+        E((9))
+        F((7))
+        A--&gt;B--&gt;C--&gt;D--&gt;E--&gt;F;
+    end
+</div><br>
+<div class="mermaid">graph LR
+    subgraph 1
+        style 1 stroke:#333,stroke-width:2px,fill:grey;
+        style A fill:yellow;
+        style B fill:yellow;
+        style C fill:red;
+        style B stroke:green,stroke-width:6px;
+        A((5))
+        B((2))
+        C((4))
+        style F fill:red;
+        style E stroke:green,stroke-width:6px;
+        D((7))
+        E((9))
+        F((8))
+        A--&gt;B--&gt;C-.-D--&gt;E--&gt;F;
+    end
+</div><br>
+<div class="mermaid">graph LR
+    subgraph 2
+        style 2 stroke:#333,stroke-width:2px,fill:grey;
+        style F fill:red;
+        style E stroke:green,stroke-width:6px;
+        A((2))
+        B((4))
+        C((5))
+        D((7))
+        E((9))
+        F((8))
+        A-.-B--&gt;C-.-D-.-E--&gt;F;
+    end
+</div><br>
+<div class="mermaid">graph LR
+    subgraph 3
+        style 3 stroke:#333,stroke-width:2px,fill:grey;
+        A((2))
+        B((4))
+        C((5))
+        D((7))
+        E((8))
+        F((9))
+        A--&gt;B--&gt;C--&gt;D--&gt;E--&gt;F;
+    end
+</div><h3 class="mume-header" id="%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E4%B8%89%E5%B9%B3%E5%9D%87">&#x5FEB;&#x901F;&#x6392;&#x5E8F;&#x4E09;&#x5E73;&#x5747;</h3>
 
 <table>
 <thead><tr>
