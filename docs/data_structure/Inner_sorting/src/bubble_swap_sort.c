@@ -6,7 +6,7 @@
 /**
  * 冒泡排序
  */
-void bubbleSort(int arr[], int len)
+void bubbleSwapSort(int arr[], int len)
 {
     // [ →i→ ]
     for (int i = 0; i < len; i++)
@@ -28,7 +28,7 @@ int main()
     int arr[] = {8, 5, 4, 2, 1};
     const int len = 5;
     printArray(arr, len);
-    bubbleSort(arr, len);
+    bubbleSwapSort(arr, len);
     printArray(arr, len);
     return 0;
 }
