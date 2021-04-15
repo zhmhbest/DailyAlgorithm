@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include "array.inl"
 
-void shellSortGroupTest(int arr[], int len)
+void shellInsertionSortGroupTest(int arr[], int len)
 {
     // 将每组分为2,4,8...个
     for (int step = len / 2; step > 0; step /= 2)
@@ -28,7 +28,7 @@ void shellSortGroupTest(int arr[], int len)
 /**
  * 希尔排序
  */
-void shellSort(int arr[], int len)
+void shellInsertionSort(int arr[], int len)
 {
     for (int step = len / 2; step > 0; step /= 2)
     {
@@ -37,7 +37,7 @@ void shellSort(int arr[], int len)
             int j = i,
                 k = j - step,
                 dump = arr[j];
-            // 插入排序
+            // 直接插入排序
             while (k >= 0 && arr[k] > dump)
             {
                 arr[j] = arr[k];
@@ -54,8 +54,8 @@ int main()
     int arr[] = {2, 5, 1, 8, 23, 546, 76, 34, 82, 3, 6, 4};
     const int len = 12;
     printArray(arr, len);
-    shellSortGroupTest(arr, len);
-    shellSort(arr, len);
+    shellInsertionSortGroupTest(arr, len);
+    shellInsertionSort(arr, len);
     printArray(arr, len);
     return 0;
 }
