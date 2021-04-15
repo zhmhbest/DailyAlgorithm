@@ -6,7 +6,7 @@
 /**
  * 简单选择排序
  */
-void selectSort(int arr[], int len)
+void simpleSelectSort(int arr[], int len)
 {
     for (int i = 0; i < len; i++)
     {
@@ -18,11 +18,10 @@ void selectSort(int arr[], int len)
 
 int main()
 {
-    // int arr[] = {2, 4, 5, 1, 8};
     int arr[] = {8, 5, 4, 2, 1};
     const int len = 5;
     printArray(arr, len);
-    selectSort(arr, len);
+    simpleSelectSort(arr, len);
     printArray(arr, len);
     return 0;
 }
